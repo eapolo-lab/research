@@ -1,0 +1,119 @@
+{
+  "name": "Orly Enrique Apolo-Apolo",
+  "credentials": "PhD",
+  "role": "Researcher, Postharvest Programme",
+  "affiliation": "IRTA – Fruitcentre",
+  "location": "Lleida, Catalonia, Spain",
+  "tagline": "AI, hyperspectral imaging and remote sensing for agri-food systems.",
+
+  "email": "enrique.apolo@irta.cat",
+  "phone": "+34 622 870 120",
+  "address": [
+    "Postharvest Programme",
+    "IRTA – Fruitcentre",
+    "Parc Científic i Tecnològic Agroalimentari de Lleida",
+    "25003 Lleida, Spain"
+  ],
+
+  "social": [
+    { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en", "icon": "scholar" },
+    { "label": "ORCID", "url": "https://orcid.org/0000-0001-8311-0579", "icon": "orcid" },
+    { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Enrique-Apolo-Apolo", "icon": "researchgate" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/enrique-apolo-apolo-phd-148b07b4/", "icon": "linkedin" },
+    { "label": "X", "url": "https://x.com/Quiqueapolo", "icon": "x" },
+    { "label": "GitHub", "url": "https://github.com/quiqueapolo", "icon": "github" }
+  ],
+
+  "stats": [
+    { "value": "19+", "label": "peer-reviewed articles" },
+    { "value": "1,000+", "label": "citations" },
+    { "value": "9", "label": "h-index" },
+    { "value": "3", "label": "countries worked in" }
+  ],
+
+  "bio": [
+    "I am a researcher working at the intersection of artificial intelligence, hyperspectral imaging and remote sensing, applied to agri-food systems. My work spans UAV and satellite-based crop monitoring, computer vision for fruit quality assessment, and deep learning methods — from convolutional networks and GANs to vision transformers and segmentation models — built to work with the noisy, high-dimensional data typical of field and postharvest environments.",
+    "I hold a B.Sc. in Agricultural Engineering and two M.Sc. degrees from the University of Seville, and completed a Ph.D. on AI, drones and remote sensing for precision agriculture, including a research stay at Wageningen University & Research on drone-based yield estimation. My postdoctoral work at KU Leuven focused on hyperspectral detection of Fusarium head blight using a tractor-mounted push-broom camera, with fieldwork in Belgium and Lithuania.",
+    "I currently work in the Postharvest programme at IRTA–Fruitcentre in Lleida, where I develop non-destructive sensing and AI pipelines for detecting physiological disorders in fruit before they become visible. Alongside this, I founded Agrocoding and serve as Chief AI Consultant at Planticus, bringing applied AI to agronomy and postharvest operations outside the lab."
+  ],
+
+  "researchAreas": [
+    {
+      "title": "Hyperspectral & multispectral imaging",
+      "description": "Push-broom and snapshot imaging systems for detecting disease, quality traits and physiological disorders that aren't visible to the eye or a standard camera."
+    },
+    {
+      "title": "UAV & satellite remote sensing",
+      "description": "Drone-based yield and canopy estimation, and Sentinel-2 / Planet / ERA5 data fusion for orchard and landscape-scale monitoring."
+    },
+    {
+      "title": "Deep learning for agri-food",
+      "description": "CNNs, GANs, vision transformers and SAM-based segmentation, adapted to the scale, noise and label scarcity typical of field and postharvest data."
+    },
+    {
+      "title": "Postharvest quality & disorders",
+      "description": "Non-destructive, pre-symptomatic detection of fruit disorders, connecting sensing methods to real packing-house and storage workflows."
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Ph.D., Agricultural Engineering",
+      "place": "University of Seville, Spain",
+      "period": "2018 – 2022",
+      "detail": "AI, drones and remote sensing for precision agriculture. Six-month research stay at Wageningen University & Research (Netherlands) on drone-based yield estimation. PIF Fellowship. Award-winning doctoral thesis, Spain/Portugal 2022–2023."
+    },
+    {
+      "degree": "M.Sc. (x2), Agricultural Engineering",
+      "place": "University of Seville, Spain",
+      "period": "2017",
+      "detail": "Both completed with extraordinary end-of-studies distinction."
+    },
+    {
+      "degree": "B.Sc., Agricultural Engineering",
+      "place": "University of Seville, Spain",
+      "period": "2012 – 2016",
+      "detail": "Distinguished academic performance award."
+    }
+  ],
+
+  "experience": [
+    {
+      "role": "Researcher, Postharvest Programme",
+      "place": "IRTA – Fruitcentre, Lleida, Spain",
+      "period": "2025 – present",
+      "detail": "Non-destructive sensing and AI for pre-symptomatic detection of postharvest fruit disorders."
+    },
+    {
+      "role": "Chief AI Consultant",
+      "place": "Planticus",
+      "period": "ongoing",
+      "detail": "Applied AI for agronomy and postharvest operations."
+    },
+    {
+      "role": "Founder",
+      "place": "Agrocoding",
+      "period": "ongoing",
+      "detail": "Digitalization and AI tools for agri-food applications."
+    },
+    {
+      "role": "Postdoctoral Researcher",
+      "place": "KU Leuven, Belgium",
+      "period": "2022 – 2025",
+      "detail": "Hyperspectral detection of Fusarium head blight with a tractor-mounted push-broom camera; generative adversarial networks and satellite imagery for vegetation change under climate change. Fieldwork in Belgium and Lithuania."
+    },
+    {
+      "role": "Researcher",
+      "place": "University of Seville, Spain",
+      "period": "2016 – 2022",
+      "detail": "Ph.D. research and early postdoctoral work on UAV-based precision agriculture, including an internship at IFAPA."
+    }
+  ],
+
+  "awards": [
+    "Award-winning doctoral thesis in precision agriculture, Spain/Portugal (2022–2023)",
+    "PIF Fellowship, University of Seville (2018)",
+    "Distinguished academic performance award, B.Sc. Agricultural Engineering, University of Seville",
+    "Extraordinary end-of-studies distinction, both M.Sc. degrees, University of Seville"
+  ]
+}

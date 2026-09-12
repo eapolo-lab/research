@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "postharvest-disorder-detection",
+    "title": "Non-destructive detection of postharvest fruit disorders",
+    "period": "2025 – present",
+    "place": "IRTA – Fruitcentre, Lleida, Spain",
+    "funder": "Add funding body — edit in data/projects.json",
+    "image": "assets/img/projects/postharvest-disorder-detection.svg",
+    "summary": "Sensing and AI pipelines aimed at flagging physiological disorders in fruit before visible symptoms appear.",
+    "abstract": "Many of the most costly physiological disorders in stored fruit — internal browning, chilling injury, core breakdown — are invisible to the eye and to standard cameras until the damage is already done. This project develops non-destructive sensing pipelines, combining hyperspectral and other imaging modalities with deep learning, to flag these disorders pre-symptomatically. The aim is to move detection from the sorting line, where damaged fruit is already a loss, back to earlier decision points in storage and handling — connecting the sensing methods directly to real packing-house workflows rather than treating them as a lab-only proof of concept.",
+    "tags": ["hyperspectral imaging", "postharvest", "deep learning"],
+    "links": []
+  },
+  {
+    "slug": "fusarium-hyperspectral-detection",
+    "title": "Hyperspectral detection of Fusarium head blight",
+    "period": "2022 – 2025",
+    "place": "KU Leuven, Belgium & Lithuania",
+    "funder": "Add funding body — edit in data/projects.json",
+    "image": "assets/img/projects/fusarium-hyperspectral.svg",
+    "summary": "A tractor-mounted push-broom hyperspectral camera system for in-field detection of Fusarium head blight in cereal crops.",
+    "abstract": "Fusarium head blight is a fungal disease of wheat and other cereals that both reduces yield and contaminates grain with mycotoxins, making early field detection a food-safety issue as much as an agronomic one. This project built a tractor-mounted push-broom hyperspectral imaging system to scan cereal canopies in the field and identify infection signatures in the reflectance spectrum before visual symptoms are obvious. Fieldwork was carried out across trial sites in Belgium and Lithuania, covering different cultivars and infection pressures to test how well the spectral signatures generalise beyond a single site or season.",
+    "tags": ["hyperspectral imaging", "plant disease", "precision agriculture"],
+    "links": []
+  },
+  {
+    "slug": "gan-satellite-vegetation-monitoring",
+    "title": "GAN-based satellite monitoring of vegetation change",
+    "period": "2022 – 2025",
+    "place": "KU Leuven, Belgium",
+    "funder": "Add funding body — edit in data/projects.json",
+    "image": "assets/img/projects/gan-satellite-vegetation.svg",
+    "summary": "Generative adversarial networks applied to satellite imagery to assess vegetation change under climate change.",
+    "abstract": "Satellite records of vegetation are often incomplete — cloud cover, sensor gaps and inconsistent revisit times all leave holes in the time series that matter most for tracking change. This project used generative adversarial networks to synthesise and reconstruct Sentinel-2 and related satellite imagery, producing more complete vegetation time series for landscape-scale monitoring. The reconstructed series were then used to study vegetation change under climate change, linking the generative modelling work to a concrete environmental monitoring question rather than treating image synthesis as an end in itself.",
+    "tags": ["GANs", "remote sensing", "Sentinel-2", "climate"],
+    "links": []
+  },
+  {
+    "slug": "uav-citrus-yield-estimation",
+    "title": "UAV-based yield and size estimation in citrus orchards",
+    "period": "2018 – 2022",
+    "place": "University of Seville, Spain, with a research stay at Wageningen University & Research",
+    "funder": "Add funding body — edit in data/projects.json",
+    "image": "assets/img/projects/uav-citrus-yield.svg",
+    "summary": "Deep learning methods for estimating citrus fruit yield and size from UAV imagery, forming the core of my doctoral thesis.",
+    "abstract": "Manual yield estimation in citrus orchards is slow, subjective and typically only sampled from a fraction of the trees in a block. This project, the core of my doctoral thesis, developed deep learning methods to detect and size citrus fruit directly from UAV-acquired imagery, producing per-tree and per-block yield estimates without destructive sampling. The methods were developed and field-tested at the University of Seville, with a six-month research stay at Wageningen University & Research focused specifically on drone-based yield estimation methodology.",
+    "tags": ["UAV", "deep learning", "yield estimation"],
+    "links": [
+      { "label": "Related publication", "url": "https://www.sciencedirect.com/science/article/pii/S1161030120300381" }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Deep learning techniques for estimation of the yield and size of citrus fruits using a UAV",
+    "authors": "O.E. Apolo-Apolo, J. Martínez-Guanter, G. Egea, P. Raja, M. Pérez-Ruiz",
+    "year": 2020,
+    "type": "article",
+    "venue": "European Journal of Agronomy",
+    "doi": "10.1016/j.eja.2020.126030",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1161030120300381",
+    "featured": true,
+    "tags": ["UAV", "deep learning", "yield estimation", "citrus"]
+  },
+  {
+    "title": "Intelligent Fruit Yield Estimation for Orchards Using Deep Learning Based Semantic Segmentation Techniques—A Review",
+    "authors": "P. Maheswari, P. Raja, O.E. Apolo-Apolo, M. Pérez-Ruiz",
+    "year": 2021,
+    "type": "article",
+    "venue": "Frontiers in Plant Science",
+    "doi": "10.3389/fpls.2021.684328",
+    "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2021.684328",
+    "featured": false,
+    "tags": ["review", "deep learning", "semantic segmentation", "yield estimation"]
+  }
+]

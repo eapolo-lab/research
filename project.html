@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Orly Enrique Apolo-Apolo, PhD</title>
+<meta name="description" content="Research project details.">
+
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand" id="brandLink"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 1H18" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M0 7H18" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M0 13H18" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#cv">CV</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="wrap" style="padding-top: 2rem;">
+    <a href="index.html#projects" class="detail-back">&larr; Back to projects</a>
+    <div class="detail-header">
+      <div class="thumb"><img id="detailImage" src="" alt=""></div>
+      <div>
+        <h1 id="detailTitle"></h1>
+        <div class="detail-meta-row">
+          <div><div class="label">Period</div><div class="value" id="detailPeriod"></div></div>
+          <div><div class="label">Location</div><div class="value" id="detailPlace"></div></div>
+          <div><div class="label">Funding</div><div class="value" id="detailFunder"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="spectrum-rule">
+</header>
+
+<main>
+  <section class="detail-body">
+    <div class="wrap measure">
+      <div class="abstract-label">Abstract</div>
+      <p class="abstract" id="detailAbstract"></p>
+      <div class="tag-row" id="detailTags"></div>
+
+      <div class="detail-links" id="detailLinksWrap" style="display:none;">
+        <h3>Related links</h3>
+        <ul id="detailLinks"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h4>Location</h4>
+      <p id="contactAddress"></p>
+    </div>
+    <div>
+      <h4>Get in touch</h4>
+      <p><a id="contactEmail" href="#"></a></p>
+      <p><a id="contactPhone" href="#"></a></p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <div class="social-row" id="socialRow"></div>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span id="footerName"></span>
+    <span>Built as a static site — hosted on GitHub Pages.</span>
+  </div>
+</footer>
+
+<script src="assets/js/project.js"></script>
+</body>
+</html>
