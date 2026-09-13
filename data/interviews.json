@@ -1,30 +1,23 @@
 [
   {
-    "title": "[EXAMPLE — replace with a real interview] Sample video used to preview this section's layout",
-    "source": "Example source / program name",
-    "date": "2024",
-    "youtubeUrl": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    "title": "Spain and the Mercosur-EU agreement. The other side of the table",
+    "source": "Instrospection",
+    "date": "2026",
+    "youtubeUrl": "https://www.youtube.com/watch?v=78Q-47UT4to",
     "placeholder": true
   },
   {
-    "title": "[EXAMPLE — replace with a real interview] Sample video used to preview this section's layout",
-    "source": "Example source / program name",
-    "date": "2024",
-    "youtubeUrl": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    "title": "Yield prediction using AI, drone imaging, satellites images",
+    "source": "Science Talk with Naz",
+    "date": "2023",
+    "youtubeUrl": "https://www.youtube.com/watch?v=VFi-mepaqGU",
     "placeholder": true
   },
   {
-    "title": "[EXAMPLE — replace with a real interview] Sample video used to preview this section's layout",
-    "source": "Example source / program name",
-    "date": "2024",
-    "youtubeUrl": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
-    "placeholder": true
-  },
-  {
-    "title": "[EXAMPLE — replace with a real interview] Sample video used to preview this section's layout",
-    "source": "Example source / program name",
-    "date": "2024",
-    "youtubeUrl": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    "title": "Inteligencia artificial aplicada a la agricultura",
+    "source": "Agricultor Digital",
+    "date": "2021",
+    "youtubeUrl": "https://www.youtube.com/watch?v=W4Hs5gw2M9k",
     "placeholder": true
   }
 ]
