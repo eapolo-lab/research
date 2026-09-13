@@ -163,7 +163,33 @@ nav.site-nav a:focus-visible{
   font-size: 1rem;
 }
 
+.hero-wrap{
+  position: relative;
+  overflow: hidden;
+}
+.hero-carousel{
+  position: absolute;
+  inset: 0;
+}
+.hero-carousel .slide{
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.hero-carousel .slide.active{ opacity: 1; }
+.hero-scrim{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(22,33,26,0.75) 0%, rgba(22,33,26,0.88) 60%, rgba(22,33,26,0.96) 100%);
+}
+
 .hero{
+  position: relative;
+  z-index: 1;
   padding: 4.5rem 0 4rem;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -200,17 +226,20 @@ nav.site-nav a:focus-visible{
   width: 148px;
   height: 148px;
   object-fit: cover;
-  border: 1px solid var(--field-line);
+  border-radius: 50%;
+  border: 3px solid var(--wheat-soft);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
 }
 .hero-figure .loc{
   font-size: 0.85rem;
   color: #a9b3a3;
 }
-.hero-figure .loc i{ margin-right: 0.35rem; }
 
 .stats-row{
   background: var(--field);
   border-top: 1px solid var(--field-line);
+  position: relative;
+  z-index: 1;
 }
 .stats-row .wrap{
   display: grid;
@@ -421,55 +450,55 @@ nav.site-nav a:focus-visible{
 /* =========================================================
    Projects
    ========================================================= */
-.project-list{ display: grid; gap: 1.5rem; grid-template-columns: repeat(2, 1fr); }
-.project-card{
-  border: 1px solid var(--line);
-  background: var(--paper);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.project-list{ display: flex; flex-direction: column; }
+.project-row{
+  display: grid;
+  grid-template-columns: 128px 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
-  transition: border-color .15s ease;
 }
-.project-card:hover{ border-color: var(--wheat); }
-.project-card .thumb{
-  aspect-ratio: 16 / 10;
+.project-list a.project-row:first-child{ padding-top: 0; }
+.project-list a.project-row:last-child{ border-bottom: 0; }
+.project-row .thumb{
+  width: 128px;
+  height: 92px;
   overflow: hidden;
   background: var(--field);
+  flex-shrink: 0;
 }
-.project-card .thumb img{
+.project-row .thumb img{
   width: 100%; height: 100%;
   object-fit: cover;
+  transition: transform .3s ease;
 }
-.project-card .card-body{
-  padding: 1.3rem 1.4rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.project-card .period{
+.project-row:hover .thumb img{ transform: scale(1.06); }
+.project-row .row-body .period{
   font-size: 0.8rem;
   color: var(--wheat);
   font-variant-numeric: tabular-nums;
 }
-.project-card h3{
+.project-row .row-body h3{
   font-size: 1.1rem;
-  margin-top: 0.35rem;
+  margin-top: 0.3rem;
+  transition: color .15s ease;
 }
-.project-card .funder{
+.project-row:hover .row-body h3{ color: var(--wheat); }
+.project-row .row-body .funder{
   font-size: 0.82rem;
   color: var(--ink-soft);
   font-style: italic;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
-.project-card p.summary{
+.project-row .row-body p.summary{
   color: var(--ink-soft);
   font-size: 0.93rem;
-  margin-top: 0.6rem;
-  flex: 1;
+  margin-top: 0.5rem;
 }
-.project-card .tag-row{ margin-top: 0.8rem; }
+.project-row .row-body .tag-row{ margin-top: 0.6rem; }
 .tag-row{
   display: flex;
   flex-wrap: wrap;
@@ -482,12 +511,12 @@ nav.site-nav a:focus-visible{
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
 }
-.project-card .view-link{
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  border-bottom: 1px solid var(--wheat);
-  align-self: flex-start;
+.project-row .row-arrow{
+  font-size: 1.3rem;
+  color: var(--line);
+  transition: color .15s ease, transform .15s ease;
 }
+.project-row:hover .row-arrow{ color: var(--wheat); transform: translateX(3px); }
 
 /* =========================================================
    Contact / footer
@@ -517,14 +546,32 @@ footer.site-footer{
 .social-row{
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem 1.1rem;
+  gap: 0.9rem;
 }
-.social-row a{
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--field-line);
-  padding-bottom: 1px;
+.social-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--field-line);
+  color: var(--paper);
+  text-decoration: none;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
 }
-.social-row a:hover{ border-bottom-color: var(--wheat-soft); }
+.social-icon .glyph{
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+}
+.social-icon:hover{
+  background: var(--wheat);
+  border-color: var(--wheat);
+  color: var(--field);
+  transform: translateY(-3px);
+}
 .footer-base{
   border-top: 1px solid var(--field-line);
   padding: 1.2rem 0;
@@ -547,7 +594,10 @@ footer.site-footer{
   .about-grid{ grid-template-columns: 1fr; }
   .timeline-cols{ grid-template-columns: 1fr; gap: 2rem; }
   .contact-grid{ grid-template-columns: 1fr; gap: 1.8rem; }
-  .project-list{ grid-template-columns: 1fr; }
+  .project-list{ grid-template-columns: unset; }
+  .project-row{ grid-template-columns: 92px 1fr; }
+  .project-row .thumb{ width: 92px; height: 68px; }
+  .project-row .row-arrow{ display: none; }
 
   nav.site-nav{
     position: absolute;

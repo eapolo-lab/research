@@ -1,0 +1,44 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16211a"/>
+      <stop offset="1" stop-color="#1f2e24"/>
+    </linearGradient>
+    <linearGradient id="spec5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5b7f9e"/>
+      <stop offset="0.28" stop-color="#7fa07a"/>
+      <stop offset="0.55" stop-color="#c9a24a"/>
+      <stop offset="0.78" stop-color="#c0703f"/>
+      <stop offset="1" stop-color="#8a3f3f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg5)"/>
+  <!-- abstract neural network -->
+  <g stroke="#e4c893" stroke-width="1" opacity="0.35">
+    <line x1="140" y1="140" x2="360" y2="120"/>
+    <line x1="140" y1="140" x2="360" y2="250"/>
+    <line x1="140" y1="260" x2="360" y2="120"/>
+    <line x1="140" y1="260" x2="360" y2="250"/>
+    <line x1="140" y1="260" x2="360" y2="380"/>
+    <line x1="140" y1="380" x2="360" y2="250"/>
+    <line x1="140" y1="380" x2="360" y2="380"/>
+    <line x1="360" y1="120" x2="580" y2="200"/>
+    <line x1="360" y1="250" x2="580" y2="200"/>
+    <line x1="360" y1="250" x2="580" y2="320"/>
+    <line x1="360" y1="380" x2="580" y2="320"/>
+    <line x1="580" y1="200" x2="700" y2="260"/>
+    <line x1="580" y1="320" x2="700" y2="260"/>
+  </g>
+  <g fill="#f5f3ec">
+    <circle cx="140" cy="140" r="6"/>
+    <circle cx="140" cy="260" r="6"/>
+    <circle cx="140" cy="380" r="6"/>
+    <circle cx="360" cy="120" r="6"/>
+    <circle cx="360" cy="250" r="6"/>
+    <circle cx="360" cy="380" r="6"/>
+    <circle cx="580" cy="200" r="6"/>
+    <circle cx="580" cy="320" r="6"/>
+    <circle cx="700" cy="260" r="8" fill="#c9a24a"/>
+  </g>
+  <rect x="0" y="460" width="800" height="6" fill="url(#spec5)"/>
+</svg>

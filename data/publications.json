@@ -20,5 +20,53 @@
     "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2021.684328",
     "featured": false,
     "tags": ["review", "deep learning", "semantic segmentation", "yield estimation"]
+  },
+  {
+    "title": "[EXAMPLE ENTRY — replace with a real one] Hyperspectral canopy sensing for early drought stress detection in orchard crops",
+    "authors": "O.E. Apolo-Apolo, A. Sample-Author, B. Sample-Author",
+    "year": 2024,
+    "type": "proceedings",
+    "venue": "International Conference on Precision Agriculture (ICPA)",
+    "doi": "",
+    "url": "",
+    "featured": false,
+    "placeholder": true,
+    "tags": ["example", "hyperspectral imaging", "precision agriculture"]
+  },
+  {
+    "title": "[EXAMPLE ENTRY — replace with a real one] A push-broom imaging pipeline for field-scale disease scouting",
+    "authors": "O.E. Apolo-Apolo, C. Sample-Author",
+    "year": 2023,
+    "type": "proceedings",
+    "venue": "IEEE International Conference on Robotics and Automation in Agriculture",
+    "doi": "",
+    "url": "",
+    "featured": false,
+    "placeholder": true,
+    "tags": ["example", "robotics", "plant disease"]
+  },
+  {
+    "title": "[EXAMPLE ENTRY — replace with a real one] Artificial Intelligence in Precision Agriculture: Methods and Field Applications",
+    "authors": "O.E. Apolo-Apolo (ed.)",
+    "year": 2023,
+    "type": "book",
+    "venue": "Sample Academic Press",
+    "doi": "",
+    "url": "",
+    "featured": false,
+    "placeholder": true,
+    "tags": ["example", "book", "precision agriculture"]
+  },
+  {
+    "title": "[EXAMPLE ENTRY — replace with a real one] Sensing pipelines for postharvest quality assessment",
+    "authors": "O.E. Apolo-Apolo, D. Sample-Author",
+    "year": 2022,
+    "type": "bookchapter",
+    "venue": "In: Advances in Non-Destructive Quality Evaluation of Fresh Produce, Sample Academic Press",
+    "doi": "",
+    "url": "",
+    "featured": false,
+    "placeholder": true,
+    "tags": ["example", "postharvest", "book chapter"]
   }
 ]

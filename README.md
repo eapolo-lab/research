@@ -30,6 +30,17 @@ articles), `proceedings` (conference proceedings), `book`, `bookchapter` or
 give a paper a highlighted left border. Publications are sorted by year
 automatically — you don't need to keep the file in order.
 
+Each entry shows a single "Read more" link — it uses `url` if you've filled
+it in, otherwise it falls back to `doi`. You don't need to fill in both;
+one is enough.
+
+**The file currently includes 4 fictional example entries** (conference
+proceedings, a book, and a book chapter), each titled
+`[EXAMPLE ENTRY — replace with a real one]` and flagged `"placeholder": true`,
+added so you can see how each publication type looks. Delete them (or
+replace their contents) whenever you're ready — they're easy to find by
+searching the file for `placeholder`.
+
 ### Add a project
 Same idea in `data/projects.json` — copy an entry and edit the fields:
 
@@ -69,8 +80,35 @@ itself from this file automatically.
 
 ### Change your photo
 Replace `assets/img/profile.jpg` with a new image of the same name (a
-square crop around 800×800px works best), or update the `src` in
-`index.html`'s `<img id="heroPhoto">` tag if you rename the file.
+square crop around 800×800px works best — it's displayed in a circle, so
+keep your face centred). Or update the `src` in `index.html`'s
+`<img id="heroPhoto">` tag if you rename the file.
+
+### Change the header photo reel
+The header shows a slowly cross-fading reel of images behind your name.
+It's controlled by the `heroReel` list in `data/profile.json`:
+
+```json
+"heroReel": [
+  "assets/img/hero/hero-postharvest.svg",
+  "assets/img/hero/hero-fusarium.svg",
+  "assets/img/hero/hero-satellite.svg",
+  "assets/img/hero/hero-uav.svg",
+  "assets/img/hero/ai-network.svg"
+]
+```
+
+These are currently 5 generated placeholder graphics matching the site's
+colour palette. To use real photos of your fieldwork or projects instead,
+drop them into `assets/img/hero/` and list their paths here — any number
+of images works, not just 5. A dark overlay is applied automatically so
+your name stays readable over any photo.
+
+### Update the "Elsewhere" icons (Google Scholar, ORCID, etc.)
+These come from the `social` list in `data/profile.json`. Each entry needs
+a `label`, a `url`, and an `icon` key that matches one of: `scholar`,
+`orcid`, `researchgate`, `linkedin`, `x`, `github`. Add, remove or reorder
+entries there and the circular icon buttons in the footer update to match.
 
 ## Previewing locally
 
@@ -111,6 +149,7 @@ assets/css/style.css       all visual styling
 assets/js/main.js          builds the homepage from the JSON files
 assets/js/project.js       builds a project detail page from the JSON files
 assets/img/profile.jpg     your photo
+assets/img/hero/           header background reel images (placeholder SVGs included)
 assets/img/projects/       project images (placeholder SVGs included)
 data/profile.json          bio, CV, contact, stats, research areas
 data/publications.json     your publication list
@@ -119,11 +158,12 @@ data/projects.json         your project list
 
 ## Notes on the current content
 
-- `data/publications.json` currently holds two publications pulled from your
-  previous site. Your CV lists 19+ peer-reviewed articles — send me (or
-  paste in) a BibTeX export from Google Scholar/ORCID and I can convert the
-  full list into this format, or you can add entries by hand using the
-  template above.
+- `data/publications.json` holds your 2 real publications plus 4 clearly
+  labelled fictional examples added so you can preview how conference
+  proceedings, a book, and a book chapter look (see "Add a publication"
+  above for how to find and remove them). Your CV lists 19+ peer-reviewed
+  articles — send me a BibTeX export from Google Scholar/ORCID and I can
+  convert the full real list into this format.
 - `data/projects.json` lists four research lines drawn from your bio
   (postharvest disorder detection, Fusarium hyperspectral detection, GAN/
   satellite vegetation monitoring, UAV citrus yield estimation), each with

@@ -1,3 +1,12 @@
+const SOCIAL_GLYPH = {
+  scholar: "GS",
+  orcid: "iD",
+  researchgate: "RG",
+  linkedin: "in",
+  x: "X",
+  github: "GH"
+};
+
 function el(tag, opts = {}, children = []) {
   const node = document.createElement(tag);
   if (opts.class) node.className = opts.class;
@@ -28,10 +37,13 @@ function renderFooterAndNav(p) {
 
   const socialRow = document.getElementById("socialRow");
   p.social.forEach(s => {
-    socialRow.appendChild(el("a", {
-      text: s.label,
-      attrs: { href: s.url, target: "_blank", rel: "noopener" }
-    }));
+    const a = el("a", {
+      class: "social-icon",
+      attrs: { href: s.url, target: "_blank", rel: "noopener", "aria-label": s.label, title: s.label }
+    }, [
+      el("span", { class: "glyph", text: SOCIAL_GLYPH[s.icon] || s.label.slice(0, 2).toUpperCase() })
+    ]);
+    socialRow.appendChild(a);
   });
 }
 

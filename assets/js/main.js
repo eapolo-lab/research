@@ -4,6 +4,15 @@
    needs to change for ordinary content updates.
    ============================================================ */
 
+const SOCIAL_GLYPH = {
+  scholar: "GS",
+  orcid: "iD",
+  researchgate: "RG",
+  linkedin: "in",
+  x: "X",
+  github: "GH"
+};
+
 const TYPE_LABELS = {
   article: "Journal article",
   proceedings: "Conference proceedings",
@@ -38,6 +47,30 @@ async function loadJSON(path) {
 }
 
 /* ---------------- Profile / header / about / cv / contact ---------------- */
+
+function renderHeroReel(images) {
+  const container = document.getElementById("heroCarousel");
+  if (!container || !images || !images.length) return;
+
+  const slides = images.map((src, i) => {
+    const slide = el("div", { class: "slide" + (i === 0 ? " active" : "") });
+    slide.style.backgroundImage = `url("${src}")`;
+    container.appendChild(slide);
+    return slide;
+  });
+
+  if (slides.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 5000);
+}
 
 function renderProfile(p) {
   document.title = `${p.name}, ${p.credentials} — ${p.role}`;
@@ -88,10 +121,13 @@ function renderProfile(p) {
 
   const socialRow = document.getElementById("socialRow");
   p.social.forEach(s => {
-    socialRow.appendChild(el("a", {
-      text: s.label,
-      attrs: { href: s.url, target: "_blank", rel: "noopener" }
-    }));
+    const a = el("a", {
+      class: "social-icon",
+      attrs: { href: s.url, target: "_blank", rel: "noopener", "aria-label": s.label, title: s.label }
+    }, [
+      el("span", { class: "glyph", text: SOCIAL_GLYPH[s.icon] || s.label.slice(0, 2).toUpperCase() })
+    ]);
+    socialRow.appendChild(a);
   });
 }
 
@@ -109,23 +145,23 @@ function timelineItem(title, place, period, detail) {
 function renderProjects(projects) {
   const list = document.getElementById("projectList");
   projects.forEach(proj => {
-    const card = el("a", {
-      class: "project-card",
+    const row = el("a", {
+      class: "project-row",
       attrs: { href: `project.html?slug=${encodeURIComponent(proj.slug)}` }
     }, [
       el("div", { class: "thumb" }, [
-        el("img", { attrs: { src: proj.image || "assets/img/projects/placeholder.svg", alt: "", loading: "lazy" } })
+        el("img", { attrs: { src: proj.image || "assets/img/projects/placeholder.svg", alt: "" } })
       ]),
-      el("div", { class: "card-body" }, [
+      el("div", { class: "row-body" }, [
         el("div", { class: "period", text: proj.period }),
         el("h3", { text: proj.title }),
         el("div", { class: "funder", text: proj.funder }),
         el("p", { class: "summary", text: proj.summary }),
-        el("div", { class: "tag-row" }, (proj.tags || []).map(t => el("span", { text: t }))),
-        el("span", { class: "view-link", text: "View project details" })
-      ])
+        el("div", { class: "tag-row" }, (proj.tags || []).map(t => el("span", { text: t })))
+      ]),
+      el("div", { class: "row-arrow", text: "\u2192" })
     ]);
-    list.appendChild(card);
+    list.appendChild(row);
   });
 }
 
@@ -186,12 +222,11 @@ function renderPublicationResults() {
 }
 
 function publicationItem(p) {
-  const links = [];
-  if (p.url) links.push(el("a", { text: "Read", attrs: { href: p.url, target: "_blank", rel: "noopener" } }));
-  if (p.doi) links.push(el("a", {
-    text: "DOI",
-    attrs: { href: p.doi.startsWith("http") ? p.doi : `https://doi.org/${p.doi}`, target: "_blank", rel: "noopener" }
-  }));
+  // Show a single "Read more" link — prefer the direct URL, fall back to
+  // the DOI only when there's no URL. No need to show both when they'd
+  // point to the same paper.
+  const primary = p.url || (p.doi ? (p.doi.startsWith("http") ? p.doi : `https://doi.org/${p.doi}`) : null);
+  const link = primary ? el("a", { text: "Read more", attrs: { href: primary, target: "_blank", rel: "noopener" } }) : null;
 
   return el("div", { class: `pub-item${p.featured ? " featured" : ""}` }, [
     el("div", { class: "pub-title" }, [
@@ -202,7 +237,7 @@ function publicationItem(p) {
       document.createTextNode(p.authors + " \u2014 "),
       el("span", { class: "pub-venue", text: p.venue || "" })
     ]),
-    links.length ? el("div", { class: "pub-links" }, links) : null
+    link ? el("div", { class: "pub-links" }, [link]) : null
   ]);
 }
 
@@ -233,6 +268,7 @@ async function init() {
     ]);
 
     renderProfile(profile);
+    renderHeroReel(profile.heroReel);
     renderProjects(projects);
 
     ALL_PUBS = publications;
