@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<header class="masthead">
+<header class="masthead" id="top">
   <div class="wrap nav-row">
     <a href="#top" class="brand" id="brandLink"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -29,31 +29,18 @@
     <nav class="site-nav" id="siteNav">
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#cv">CV</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a id="navCv" href="#" target="_blank" rel="noopener">CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
 
-  <div class="hero-wrap" id="top">
-    <div class="hero-carousel" id="heroCarousel"></div>
-    <div class="hero-scrim"></div>
-    <div class="wrap hero">
-      <div>
-        <h1 id="heroName"></h1>
-        <p class="role" id="heroRole"></p>
-        <p class="tagline" id="heroTagline"></p>
-      </div>
-      <div class="hero-figure">
-        <img id="heroPhoto" src="assets/img/profile.jpg" alt="">
-        <p class="loc"><span id="heroLocation"></span></p>
-      </div>
-    </div>
+  <!-- Photo reel: a scrolling filmstrip of research imagery -->
+  <div class="reel-strip">
+    <div class="reel-track" id="reelTrack"></div>
   </div>
-
-  <hr class="spectrum-rule">
 
   <div class="stats-row">
     <div class="wrap" id="statsRow"></div>
@@ -62,32 +49,32 @@
 
 <main>
 
-  <!-- About -->
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head"><h2>About</h2></div>
-      <div class="about-grid">
+  <!-- About: personal intro card -->
+  <section id="about" class="intro-section">
+    <div class="wrap intro-grid">
+      <aside class="intro-side">
+        <img id="heroPhoto" src="assets/img/profile.png" alt="">
+        <div class="intro-side-text">
+          <h1 id="introName"></h1>
+          <div id="introRoleLines"></div>
+          <div class="social-row" id="socialRowTop"></div>
+        </div>
+      </aside>
+      <div class="intro-main">
+        <h2 id="greeting"></h2>
         <div id="bioText"></div>
-        <ul class="areas-list" id="areasList"></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CV: education + experience + awards -->
-  <section id="cv">
-    <div class="wrap">
-      <div class="section-head"><h2>Education &amp; experience</h2></div>
-      <div class="timeline-cols">
-        <div>
-          <h3 class="col-title">Education</h3>
-          <div id="educationList"></div>
-        </div>
-        <div>
-          <h3 class="col-title">Experience</h3>
-          <div id="experienceList"></div>
+        <div class="interests-row" id="interestsRow"></div>
+        <div class="timeline-cols compact">
+          <div>
+            <h3 class="col-title">Experience</h3>
+            <div id="experienceList"></div>
+          </div>
+          <div>
+            <h3 class="col-title">Education</h3>
+            <div id="educationList"></div>
+          </div>
         </div>
       </div>
-      <ul class="awards-list" id="awardsList"></ul>
     </div>
   </section>
 
