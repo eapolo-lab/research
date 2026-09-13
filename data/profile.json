@@ -11,7 +11,6 @@
   ],
   "location": "Lleida, Catalonia, Spain",
   "tagline": "AI, hyperspectral imaging and remote sensing for agri-food systems.",
-
   "email": "enrique.apolo@irta.cat",
   "phone": "+34 622 870 120",
   "address": [
@@ -21,29 +20,62 @@
     "25003 Lleida, Spain"
   ],
   "cvUrl": "assets/cv/enrique-apolo-apolo-cv.pdf",
-
+  "photoHover": "assets/img/profile-hover.png",
   "social": [
-    { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en", "icon": "scholar" },
-    { "label": "ORCID", "url": "https://orcid.org/0000-0001-8311-0579", "icon": "orcid" },
-    { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Enrique-Apolo-Apolo", "icon": "researchgate" },
-    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/enrique-apolo-apolo-phd-148b07b4/", "icon": "linkedin" },
-    { "label": "X", "url": "https://x.com/Quiqueapolo", "icon": "x" },
-    { "label": "GitHub", "url": "https://github.com/quiqueapolo", "icon": "github" }
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en",
+      "icon": "scholar"
+    },
+    {
+      "label": "ORCID",
+      "url": "https://orcid.org/0000-0001-8311-0579",
+      "icon": "orcid"
+    },
+    {
+      "label": "ResearchGate",
+      "url": "https://www.researchgate.net/profile/Enrique-Apolo-Apolo",
+      "icon": "researchgate"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/enrique-apolo-apolo-phd-148b07b4/",
+      "icon": "linkedin"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/Quiqueapolo",
+      "icon": "x"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/quiqueapolo",
+      "icon": "github"
+    }
   ],
-
   "stats": [
-    { "value": "19+", "label": "peer-reviewed articles" },
-    { "value": "1,000+", "label": "citations" },
-    { "value": "9", "label": "h-index" },
-    { "value": "3", "label": "countries worked in" }
+    {
+      "value": "19+",
+      "label": "peer-reviewed articles"
+    },
+    {
+      "value": "1,000+",
+      "label": "citations"
+    },
+    {
+      "value": "9",
+      "label": "h-index"
+    },
+    {
+      "value": "3",
+      "label": "countries worked in"
+    }
   ],
-
-  "greeting": "Hi, I'm Enrique! \ud83d\udc4b",
+  "greeting": "Hi, I'm Enrique! 👋",
   "bio": [
     "I'm a researcher working at the intersection of AI, hyperspectral imaging and remote sensing for agri-food systems — from UAV and satellite crop monitoring to computer vision for fruit quality, using deep learning methods built for the noisy, high-dimensional data typical of field and postharvest environments.",
     "I completed my Ph.D. at the University of Seville and a postdoc at KU Leuven on hyperspectral detection of Fusarium head blight. I now work in the Postharvest programme at IRTA–Fruitcentre in Lleida, detecting fruit disorders before they become visible, while also running Agrocoding and advising Planticus as Chief AI Consultant."
   ],
-
   "researchAreas": [
     {
       "title": "Hyperspectral & multispectral imaging",
@@ -62,7 +94,6 @@
       "description": "Non-destructive, pre-symptomatic detection of fruit disorders, connecting sensing methods to real packing-house and storage workflows."
     }
   ],
-
   "education": [
     {
       "degree": "Ph.D., Agricultural Engineering",
@@ -83,7 +114,6 @@
       "detail": "Distinguished academic performance award."
     }
   ],
-
   "experience": [
     {
       "role": "Researcher, Postharvest Programme",
@@ -116,19 +146,17 @@
       "detail": "Ph.D. research and early postdoctoral work on UAV-based precision agriculture, including an internship at IFAPA."
     }
   ],
-
   "awards": [
     "Award-winning doctoral thesis in precision agriculture, Spain/Portugal (2022–2023)",
     "PIF Fellowship, University of Seville (2018)",
     "Distinguished academic performance award, B.Sc. Agricultural Engineering, University of Seville",
     "Extraordinary end-of-studies distinction, both M.Sc. degrees, University of Seville"
   ],
-
   "heroReel": [
-    "assets/img/hero/hero-postharvest.svg",
-    "assets/img/hero/hero-fusarium.svg",
-    "assets/img/hero/hero-satellite.svg",
-    "assets/img/hero/hero-uav.svg",
-    "assets/img/hero/ai-network.svg"
+    "assets/img/hero/hero-postharvest.png",
+    "assets/img/hero/hero-fusarium.png",
+    "assets/img/hero/hero-satellite.png",
+    "assets/img/hero/hero-uav.png",
+    "assets/img/hero/ai-network.png"
   ]
 }

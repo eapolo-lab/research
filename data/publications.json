@@ -8,7 +8,12 @@
     "doi": "10.1016/j.eja.2020.126030",
     "url": "https://www.sciencedirect.com/science/article/pii/S1161030120300381",
     "featured": true,
-    "tags": ["UAV", "deep learning", "yield estimation", "citrus"]
+    "tags": [
+      "UAV",
+      "deep learning",
+      "yield estimation",
+      "citrus"
+    ]
   },
   {
     "title": "Intelligent Fruit Yield Estimation for Orchards Using Deep Learning Based Semantic Segmentation Techniques—A Review",
@@ -19,7 +24,12 @@
     "doi": "10.3389/fpls.2021.684328",
     "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2021.684328",
     "featured": false,
-    "tags": ["review", "deep learning", "semantic segmentation", "yield estimation"]
+    "tags": [
+      "review",
+      "deep learning",
+      "semantic segmentation",
+      "yield estimation"
+    ]
   },
   {
     "title": "[EXAMPLE ENTRY — replace with a real one] Hyperspectral canopy sensing for early drought stress detection in orchard crops",
@@ -28,10 +38,14 @@
     "type": "proceedings",
     "venue": "International Conference on Precision Agriculture (ICPA)",
     "doi": "",
-    "url": "",
+    "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en",
     "featured": false,
     "placeholder": true,
-    "tags": ["example", "hyperspectral imaging", "precision agriculture"]
+    "tags": [
+      "example",
+      "hyperspectral imaging",
+      "precision agriculture"
+    ]
   },
   {
     "title": "[EXAMPLE ENTRY — replace with a real one] A push-broom imaging pipeline for field-scale disease scouting",
@@ -40,10 +54,14 @@
     "type": "proceedings",
     "venue": "IEEE International Conference on Robotics and Automation in Agriculture",
     "doi": "",
-    "url": "",
+    "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en",
     "featured": false,
     "placeholder": true,
-    "tags": ["example", "robotics", "plant disease"]
+    "tags": [
+      "example",
+      "robotics",
+      "plant disease"
+    ]
   },
   {
     "title": "[EXAMPLE ENTRY — replace with a real one] Artificial Intelligence in Precision Agriculture: Methods and Field Applications",
@@ -52,10 +70,14 @@
     "type": "book",
     "venue": "Sample Academic Press",
     "doi": "",
-    "url": "",
+    "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en",
     "featured": false,
     "placeholder": true,
-    "tags": ["example", "book", "precision agriculture"]
+    "tags": [
+      "example",
+      "book",
+      "precision agriculture"
+    ]
   },
   {
     "title": "[EXAMPLE ENTRY — replace with a real one] Sensing pipelines for postharvest quality assessment",
@@ -64,9 +86,13 @@
     "type": "bookchapter",
     "venue": "In: Advances in Non-Destructive Quality Evaluation of Fresh Produce, Sample Academic Press",
     "doi": "",
-    "url": "",
+    "url": "https://scholar.google.com/citations?user=8chlzsIAAAAJ&hl=en",
     "featured": false,
     "placeholder": true,
-    "tags": ["example", "postharvest", "book chapter"]
+    "tags": [
+      "example",
+      "postharvest",
+      "book chapter"
+    ]
   }
 ]

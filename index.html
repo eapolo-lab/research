@@ -31,6 +31,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#interviews">Interviews</a></li>
         <li><a id="navCv" href="#" target="_blank" rel="noopener">CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -53,7 +54,10 @@
   <section id="about" class="intro-section">
     <div class="wrap intro-grid">
       <aside class="intro-side">
-        <img id="heroPhoto" src="assets/img/profile.png" alt="">
+        <div class="photo-swap">
+          <img id="heroPhoto" src="assets/img/profile.png" alt="">
+          <img id="heroPhotoHover" alt="" aria-hidden="true">
+        </div>
         <div class="intro-side-text">
           <h1 id="introName"></h1>
           <div id="introRoleLines"></div>
@@ -64,16 +68,6 @@
         <h2 id="greeting"></h2>
         <div id="bioText"></div>
         <div class="interests-row" id="interestsRow"></div>
-        <div class="timeline-cols compact">
-          <div>
-            <h3 class="col-title">Experience</h3>
-            <div id="experienceList"></div>
-          </div>
-          <div>
-            <h3 class="col-title">Education</h3>
-            <div id="educationList"></div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -98,6 +92,14 @@
     <div class="wrap">
       <div class="section-head"><h2>Research projects</h2></div>
       <div class="project-list" id="projectList"></div>
+    </div>
+  </section>
+
+  <!-- Interviews -->
+  <section id="interviews">
+    <div class="wrap">
+      <div class="section-head"><h2>Interviews</h2></div>
+      <div class="interview-grid" id="interviewGrid"></div>
     </div>
   </section>
 

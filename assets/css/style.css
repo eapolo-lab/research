@@ -248,15 +248,28 @@ nav.site-nav a:focus-visible{
 .intro-side{
   text-align: center;
 }
-.intro-side img{
+.photo-swap{
+  position: relative;
   width: 190px;
   height: 190px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+}
+.photo-swap img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0 auto 1.2rem;
   border: 3px solid var(--wheat-soft);
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: opacity .35s ease;
 }
+#heroPhotoHover{ opacity: 0; }
+.photo-swap:hover #heroPhotoHover{ opacity: 1; }
+.photo-swap.no-hover-photo:hover #heroPhotoHover{ opacity: 0; }
 .intro-side h1{
   font-size: 1.5rem;
 }
@@ -310,47 +323,6 @@ nav.site-nav a:focus-visible{
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
 }
-
-.timeline-cols.compact{ margin-top: 2.4rem; }
-
-
-
-/* =========================================================
-   Timeline (education / experience)
-   ========================================================= */
-.timeline-cols{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-.timeline-cols h3.col-title{
-  font-size: 0.85rem;
-  font-family: var(--sans);
-  color: var(--ink-soft);
-  margin-bottom: 1.4rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--line);
-}
-.tl-item{
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px dashed var(--line);
-}
-.tl-item:last-child{ border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
-.tl-item .period{
-  font-size: 0.82rem;
-  color: var(--wheat);
-  font-variant-numeric: tabular-nums;
-}
-.tl-item h4{ font-size: 1.05rem; margin-top: 0.2rem; }
-.tl-item .place{
-  font-size: 0.92rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  margin-top: 0.1rem;
-}
-
-
 
 /* =========================================================
    Publications
@@ -605,10 +577,9 @@ footer.site-footer{
   .stats-row .wrap{ grid-template-columns: repeat(2, 1fr); }
   .intro-grid{ grid-template-columns: 1fr; gap: 2rem; }
   .intro-side{ display: flex; align-items: center; gap: 1.2rem; text-align: left; }
-  .intro-side img{ width: 88px; height: 88px; margin: 0; flex-shrink: 0; }
+  .photo-swap{ width: 88px; height: 88px; margin: 0; flex-shrink: 0; }
   .intro-side-text{ flex: 1; }
   .intro-side .social-row{ justify-content: flex-start; margin-top: 0.8rem; }
-  .timeline-cols{ grid-template-columns: 1fr; gap: 2rem; }
   .contact-grid{ grid-template-columns: 1fr; gap: 1.8rem; }
   .project-list{ grid-template-columns: unset; }
   .project-row{ grid-template-columns: 92px 1fr; }
@@ -716,4 +687,62 @@ footer.site-footer{
 @media (max-width: 860px){
   .detail-header{ grid-template-columns: 1fr; }
   .detail-meta-row{ grid-template-columns: 1fr 1fr; }
+}
+
+/* =========================================================
+   Interviews
+   ========================================================= */
+.interview-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+.interview-card{ display: flex; flex-direction: column; }
+.interview-thumb{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--field);
+  overflow: hidden;
+  cursor: pointer;
+}
+.interview-thumb img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+.interview-thumb:hover img{ transform: scale(1.05); }
+.interview-thumb iframe{
+  width: 100%; height: 100%;
+  border: 0;
+}
+.play-badge{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(22,33,26,0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+  transition: background-color .15s ease, transform .15s ease;
+}
+.interview-thumb:hover .play-badge{
+  background: var(--wheat);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.interview-body{ padding-top: 0.8rem; }
+.interview-body h3{
+  font-size: 1rem;
+  line-height: 1.35;
+}
+.interview-meta{
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 860px){
+  .interview-grid{ grid-template-columns: 1fr; gap: 1.5rem; }
 }

@@ -39,9 +39,11 @@ real link.
 **The file currently includes 4 fictional example entries** (conference
 proceedings, a book, and a book chapter), each titled
 `[EXAMPLE ENTRY — replace with a real one]` and flagged `"placeholder": true`,
-added so you can see how each publication type looks. Delete them (or
-replace their contents) whenever you're ready — they're easy to find by
-searching the file for `placeholder`.
+added so you can see how each publication type looks. Their "Read more"
+button currently points at your Google Scholar profile just as a working
+demo link — replace it with the real paper's link when you fill in the
+entry. Delete these examples (or replace their contents) whenever you're
+ready — they're easy to find by searching the file for `placeholder`.
 
 ### Add a project
 Same idea in `data/projects.json` — copy an entry and edit the fields:
@@ -76,10 +78,10 @@ at least 800px wide, works best).
 
 ### Update your bio, CV intro, or contact details
 Everything on the About card — name, role lines, greeting, bio paragraphs,
-research interests, education, experience, awards, stats, email, phone,
-address, social links, and the CV file it links to — lives in
-`data/profile.json`. Edit the values directly; the page rebuilds itself
-from this file automatically. A few fields worth knowing:
+research interests, stats, email, phone, address, social links, and the CV
+file it links to — lives in `data/profile.json`. Edit the values directly;
+the page rebuilds itself from this file automatically. A few fields worth
+knowing:
 
 - `greeting` — the "Hi, I'm ...!" heading at the top of the About card.
 - `roleLines` — the lines shown under your name (role, affiliation, any
@@ -89,20 +91,27 @@ from this file automatically. A few fields worth knowing:
 - `researchAreas` — only the `title` of each is shown on the homepage (as
   a pill under your bio); the `description` field is kept in the file for
   your own reference but isn't displayed there.
-- `awards` — kept in the file for reference (e.g. if you regenerate the CV
-  PDF) but not shown on the homepage, to keep the About card short.
+- `education`, `experience` and `awards` are **not shown on the homepage**
+  (removed to keep the About card short) but are kept in the file — the
+  auto-generated CV PDF is built from them, so keep them accurate there.
 
 ### Photos
-All photos on the site should be **PNG** files (not JPG) — this includes
-your profile photo and any real photos you add later (project photos, the
-header filmstrip). Vector graphics (the abstract placeholder illustrations
-in `assets/img/hero/` and `assets/img/projects/`) stay as `.svg` since
-they're illustrations, not photos.
+All photos on the site should be **PNG** files, including the abstract
+illustration graphics (project images, the header filmstrip) — there are
+no `.svg` files anywhere in the site.
 
 ### Change your photo
 Replace `assets/img/profile.png` with a new PNG of the same name (a square
 crop around 800×800px works best — it's displayed in a circle, so keep
 your face centred).
+
+### Add a second photo on hover
+Hovering over your profile photo can swap it for a second one (e.g. a
+candid or action shot). Just save that second photo as
+`assets/img/profile-hover.png` — the site already looks for a file at that
+exact path (set via the `photoHover` field in `data/profile.json`) and the
+hover effect turns on automatically once the file exists. Until you add
+it, hovering does nothing (no broken-image icon, it just fails silently).
 
 ### Change the header photo reel (filmstrip)
 The header shows a continuously scrolling filmstrip of small images below
@@ -110,20 +119,41 @@ the menu. It's controlled by the `heroReel` list in `data/profile.json`:
 
 ```json
 "heroReel": [
-  "assets/img/hero/hero-postharvest.svg",
-  "assets/img/hero/hero-fusarium.svg",
-  "assets/img/hero/hero-satellite.svg",
-  "assets/img/hero/hero-uav.svg",
-  "assets/img/hero/ai-network.svg"
+  "assets/img/hero/hero-postharvest.png",
+  "assets/img/hero/hero-fusarium.png",
+  "assets/img/hero/hero-satellite.png",
+  "assets/img/hero/hero-uav.png",
+  "assets/img/hero/ai-network.png"
 ]
 ```
 
-These are currently 5 generated placeholder graphics matching the site's
-colour palette. To use real photos of your fieldwork or projects instead,
-save them as PNGs in `assets/img/hero/` and list their paths here — any
-number of images works, not just 5. The strip scrolls continuously and
-pauses automatically for anyone with reduced-motion accessibility settings
-enabled.
+These are currently 5 generated placeholder graphics (PNGs) matching the
+site's colour palette. To use real photos of your fieldwork or projects
+instead, save them as PNGs in `assets/img/hero/` and list their paths
+here — any number of images works, not just 5. The strip scrolls
+continuously and pauses automatically for anyone with reduced-motion
+accessibility settings enabled.
+
+### Add an interview
+Open `data/interviews.json` and add an entry:
+
+```json
+{
+  "title": "Interview title or the show/program name",
+  "source": "Channel, program or publication name",
+  "date": "2025",
+  "youtubeUrl": "https://www.youtube.com/watch?v=XXXXXXXXXXX"
+}
+```
+
+Each entry renders as a card with the video's real YouTube thumbnail and a
+play button; clicking it plays the video embedded right there on the page
+(no extra click-through to YouTube). Any standard YouTube URL format works
+(`youtube.com/watch?v=...`, `youtu.be/...`, `youtube.com/shorts/...`).
+
+**The file currently has 1 fictional example entry** (a neutral, unrelated
+video used only to preview the layout) — replace or delete it in
+`data/interviews.json` once you add your real interviews.
 
 ### Update the CV button
 The "CV" link in the menu opens a PDF directly in a new tab — it does not
@@ -183,12 +213,14 @@ assets/css/style.css       all visual styling
 assets/js/main.js          builds the homepage from the JSON files
 assets/js/project.js       builds a project detail page from the JSON files
 assets/img/profile.png     your photo (PNG)
-assets/img/hero/           header filmstrip images (placeholder SVGs included)
-assets/img/projects/       project images (placeholder SVGs included)
+assets/img/profile-hover.png   optional second photo shown on hover (add it yourself)
+assets/img/hero/           header filmstrip images (placeholder PNGs included)
+assets/img/projects/       project images (placeholder PNGs included)
 assets/cv/                 your CV PDF (linked from the "CV" menu item)
 data/profile.json          bio, CV link, contact, stats, research areas
 data/publications.json     your publication list
 data/projects.json         your project list
+data/interviews.json       your YouTube interview links
 ```
 
 ## Notes on the current content
@@ -196,9 +228,11 @@ data/projects.json         your project list
 - `data/publications.json` holds your 2 real publications plus 4 clearly
   labelled fictional examples added so you can preview how conference
   proceedings, a book, and a book chapter look (see "Add a publication"
-  above for how to find and remove them). Your CV lists 19+ peer-reviewed
-  articles — send me a BibTeX export from Google Scholar/ORCID and I can
-  convert the full real list into this format.
+  above for how to find and remove them). Their "Read more" button points
+  at your Google Scholar profile as a working demo link, not a real paper
+  URL. Your CV lists 19+ peer-reviewed articles — send me a BibTeX export
+  from Google Scholar/ORCID and I can convert the full real list into this
+  format.
 - `data/projects.json` lists four research lines drawn from your bio
   (postharvest disorder detection, Fusarium hyperspectral detection, GAN/
   satellite vegetation monitoring, UAV citrus yield estimation), each with
@@ -206,10 +240,12 @@ data/projects.json         your project list
   grants) featured instead, replace these with your own titles and
   descriptions.
 - Each project currently uses a generated placeholder graphic (an abstract
-  line illustration matching the site's colour palette) instead of a real
-  photo, and the `funder` field is a visible placeholder — replace both
-  with real images (as PNGs) and funding-body names when you have them;
+  line illustration matching the site's colour palette, as a PNG) instead
+  of a real photo, and the `funder` field is a visible placeholder —
+  replace both with real images and funding-body names when you have them;
   nothing was invented for these two fields.
+- `data/interviews.json` has 1 fictional example entry (a neutral, unrelated
+  video) so you can see the layout — replace it with your real interviews.
 - `assets/cv/enrique-apolo-apolo-cv.pdf` is a one-page summary CV
   auto-generated from `data/profile.json` (name, roles, bio, experience,
   education, awards) as a placeholder — it says as much on its own last

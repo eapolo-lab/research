@@ -113,6 +113,14 @@ function renderProfile(p) {
 
   // Intro card
   document.getElementById("heroPhoto").alt = p.name;
+  if (p.photoHover) {
+    const hoverImg = document.getElementById("heroPhotoHover");
+    hoverImg.src = p.photoHover;
+    hoverImg.alt = p.name;
+    hoverImg.onerror = () => { hoverImg.closest(".photo-swap").classList.add("no-hover-photo"); };
+  } else {
+    document.querySelector(".photo-swap").classList.add("no-hover-photo");
+  }
   document.getElementById("introName").textContent = p.name;
   const roleLines = document.getElementById("introRoleLines");
   (p.roleLines || [p.role, p.affiliation]).forEach((line, i) => {
@@ -128,12 +136,6 @@ function renderProfile(p) {
   interestsRow.appendChild(el("span", { class: "interests-label", text: "Research interests:" }));
   p.researchAreas.forEach(a => interestsRow.appendChild(el("span", { class: "interest-tag", text: a.title })));
 
-  const eduList = document.getElementById("educationList");
-  p.education.forEach(e => eduList.appendChild(timelineItem(e.degree, e.place, e.period)));
-
-  const expList = document.getElementById("experienceList");
-  p.experience.forEach(e => expList.appendChild(timelineItem(e.role, e.place, e.period)));
-
   // Footer contact
   document.getElementById("contactAddress").innerHTML = p.address.join("<br>");
   const emailLink = document.getElementById("contactEmail");
@@ -143,14 +145,6 @@ function renderProfile(p) {
   phoneLink.href = `tel:${p.phone.replace(/\s+/g, "")}`;
   phoneLink.textContent = p.phone;
   renderSocialIcons(document.getElementById("socialRow"), p.social);
-}
-
-function timelineItem(title, place, period) {
-  return el("div", { class: "tl-item" }, [
-    el("div", { class: "period", text: period }),
-    el("h4", { text: title }),
-    el("div", { class: "place", text: place })
-  ]);
 }
 
 /* ---------------- Projects ---------------- */
@@ -163,7 +157,7 @@ function renderProjects(projects) {
       attrs: { href: `project.html?slug=${encodeURIComponent(proj.slug)}` }
     }, [
       el("div", { class: "thumb" }, [
-        el("img", { attrs: { src: proj.image || "assets/img/projects/placeholder.svg", alt: "" } })
+        el("img", { attrs: { src: proj.image || "assets/img/projects/placeholder.png", alt: "" } })
       ]),
       el("div", { class: "row-body" }, [
         el("div", { class: "period", text: proj.period }),
@@ -258,6 +252,62 @@ function publicationItem(p) {
   ]);
 }
 
+/* ---------------- Interviews ---------------- */
+
+function extractYouTubeId(url) {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=)([\w-]{11})/,
+    /(?:youtu\.be\/)([\w-]{11})/,
+    /(?:youtube\.com\/embed\/)([\w-]{11})/,
+    /(?:youtube\.com\/shorts\/)([\w-]{11})/
+  ];
+  for (const re of patterns) {
+    const m = url.match(re);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+function renderInterviews(interviews) {
+  const grid = document.getElementById("interviewGrid");
+  if (!grid) return;
+
+  if (!interviews || !interviews.length) {
+    grid.appendChild(el("p", { class: "pub-empty", text: "No interviews added yet — see data/interviews.json." }));
+    return;
+  }
+
+  interviews.forEach(iv => {
+    const videoId = extractYouTubeId(iv.youtubeUrl || "");
+    if (!videoId) return;
+
+    const thumb = el("div", { class: "interview-thumb" }, [
+      el("img", { attrs: { src: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`, alt: "", loading: "lazy" } }),
+      el("span", { class: "play-badge", html: `<svg viewBox="0 0 24 24" width="22" height="22"><polygon points="7,4 20,12 7,20" fill="#fff"/></svg>` })
+    ]);
+    thumb.addEventListener("click", () => {
+      thumb.innerHTML = "";
+      thumb.appendChild(el("iframe", {
+        attrs: {
+          src: `https://www.youtube.com/embed/${videoId}?autoplay=1`,
+          title: iv.title,
+          frameborder: "0",
+          allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+          allowfullscreen: "true"
+        }
+      }));
+    }, { once: true });
+
+    grid.appendChild(el("div", { class: "interview-card" }, [
+      thumb,
+      el("div", { class: "interview-body" }, [
+        el("h3", { text: iv.title }),
+        el("div", { class: "interview-meta", text: [iv.source, iv.date].filter(Boolean).join(" \u00b7 ") })
+      ])
+    ]));
+  });
+}
+
 /* ---------------- Mobile nav ---------------- */
 
 function initNav() {
@@ -278,15 +328,17 @@ function initNav() {
 async function init() {
   initNav();
   try {
-    const [profile, publications, projects] = await Promise.all([
+    const [profile, publications, projects, interviews] = await Promise.all([
       loadJSON("data/profile.json"),
       loadJSON("data/publications.json"),
-      loadJSON("data/projects.json")
+      loadJSON("data/projects.json"),
+      loadJSON("data/interviews.json")
     ]);
 
     renderProfile(profile);
     renderReelStrip(profile.heroReel);
     renderProjects(projects);
+    renderInterviews(interviews);
 
     ALL_PUBS = publications;
     renderPublicationControls();
