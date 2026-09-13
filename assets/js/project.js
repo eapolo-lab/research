@@ -92,32 +92,39 @@ function initNav() {
 async function init() {
   initNav();
   const slug = new URLSearchParams(window.location.search).get("slug");
-  try {
-    const [profile, projects] = await Promise.all([
-      loadJSON("data/profile.json"),
-      loadJSON("data/projects.json")
-    ]);
-    renderFooterAndNav(profile);
 
-    const proj = projects.find(p => p.slug === slug);
-    if (!proj) {
-      document.querySelector("main").innerHTML =
-        `<div class="wrap" style="padding:3rem 0;"><p>Project not found.
-         <a href="index.html#projects" style="border-bottom:1px solid var(--wheat);">Back to projects</a>.</p></div>`;
-      document.querySelector(".detail-header").style.display = "none";
-      return;
-    }
-    renderProject(proj);
-  } catch (err) {
-    console.error(err);
-    document.querySelector("main").insertAdjacentHTML(
-      "afterbegin",
-      `<div class="wrap"><p style="color:#8a3f3f;padding:2rem 0;">
-        Could not load project content. If you're viewing this file directly
-        (file://), run a local server instead \u2014 see README.md.
-      </p></div>`
-    );
+  const [profileR, projR] = await Promise.allSettled([
+    loadJSON("data/profile.json"),
+    loadJSON("data/projects.json")
+  ]);
+
+  if (profileR.status === "fulfilled") {
+    renderFooterAndNav(profileR.value);
+  } else {
+    console.error("profile.json:", profileR.reason);
   }
+
+  if (projR.status !== "fulfilled") {
+    console.error("projects.json:", projR.reason);
+    document.querySelector("main").innerHTML =
+      `<div class="wrap" style="padding:3rem 0;"><p style="color:#8a3f3f;">
+        Could not load data/projects.json \u2014 it likely has a JSON syntax
+        error (a common one: a missing comma between entries). Check the
+        browser console for details.
+      </p></div>`;
+    document.querySelector(".detail-header").style.display = "none";
+    return;
+  }
+
+  const proj = projR.value.find(p => p.slug === slug);
+  if (!proj) {
+    document.querySelector("main").innerHTML =
+      `<div class="wrap" style="padding:3rem 0;"><p>Project not found.
+       <a href="index.html#projects" style="border-bottom:1px solid var(--wheat);">Back to projects</a>.</p></div>`;
+    document.querySelector(".detail-header").style.display = "none";
+    return;
+  }
+  renderProject(proj);
 }
 
 init();

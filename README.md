@@ -115,24 +115,36 @@ it, hovering does nothing (no broken-image icon, it just fails silently).
 
 ### Change the header photo reel (filmstrip)
 The header shows a continuously scrolling filmstrip of small images below
-the menu. It's controlled by the `heroReel` list in `data/profile.json`:
+the menu. You don't edit any file for this — the site automatically scans
+the `assets/img/hero/` folder for numbered images and uses whatever it
+finds:
 
-```json
-"heroReel": [
-  "assets/img/hero/hero-postharvest.png",
-  "assets/img/hero/hero-fusarium.png",
-  "assets/img/hero/hero-satellite.png",
-  "assets/img/hero/hero-uav.png",
-  "assets/img/hero/ai-network.png"
-]
+```
+assets/img/hero/img_01.png
+assets/img/hero/img_02.png
+assets/img/hero/img_03.png
+...
 ```
 
-These are currently 5 generated placeholder graphics (PNGs) matching the
-site's colour palette. To use real photos of your fieldwork or projects
-instead, save them as PNGs in `assets/img/hero/` and list their paths
-here — any number of images works, not just 5. The strip scrolls
-continuously and pauses automatically for anyone with reduced-motion
-accessibility settings enabled.
+To change what's in the reel, just add, remove or replace files in that
+folder, always named `img_` followed by a two-digit number and `.png`
+(`img_01.png`, `img_02.png`, `img_03.png`, ...). Rules to keep in mind:
+
+- **Numbering must start at `img_01` and have no gaps.** The site checks
+  `img_01`, then `img_02`, and so on, stopping at the first number that
+  isn't there — so if you delete `img_03.png` but keep `img_04.png`, only
+  images 1 and 2 will show up. Renumber the remaining files so they're
+  consecutive again after removing one.
+- All files must be **PNG** and named with a **two-digit** number (`01`,
+  not `1`) up to `img_99.png`, which is far more than you'll need.
+- There's no fixed limit on how many you can add (up to 99) — 5 to 10
+  tends to look best for a scrolling strip.
+
+The strip scrolls continuously and pauses automatically for anyone with
+reduced-motion accessibility settings enabled. It currently ships with 5
+generated placeholder graphics matching the site's colour palette
+(`img_01.png` through `img_05.png`) — replace them with real photos of
+your fieldwork or projects whenever you like.
 
 ### Add an interview
 Open `data/interviews.json` and add an entry:

@@ -66,6 +66,34 @@ async function loadJSON(path) {
 
 /* ---------------- Header: photo reel ---------------- */
 
+const REEL_FOLDER = "assets/img/hero/";
+const REEL_PREFIX = "img_";
+const REEL_MAX_PROBE = 60; // stops as soon as a number is missing, so this is just a safety ceiling
+
+function probeImage(url) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
+// Scans assets/img/hero/ for img_01.png, img_02.png, ... and stops at the
+// first missing number — so the reel always matches whatever numbered
+// photos are actually in the folder, no JSON editing required.
+async function discoverReelImages() {
+  const found = [];
+  for (let i = 1; i <= REEL_MAX_PROBE; i++) {
+    const num = String(i).padStart(2, "0");
+    const url = `${REEL_FOLDER}${REEL_PREFIX}${num}.png`;
+    const ok = await probeImage(url);
+    if (!ok) break;
+    found.push(url);
+  }
+  return found;
+}
+
 function renderReelStrip(images) {
   const track = document.getElementById("reelTrack");
   if (!track || !images || !images.length) return;
@@ -325,33 +353,57 @@ function initNav() {
 
 /* ---------------- Boot ---------------- */
 
+function showSectionError(container, filename) {
+  if (!container) return;
+  container.innerHTML = "";
+  container.appendChild(el("p", {
+    class: "pub-empty",
+    text: `Could not load ${filename} \u2014 it likely has a JSON syntax error (a common one: a missing comma between entries). Check the browser console for details.`
+  }));
+}
+
 async function init() {
   initNav();
-  try {
-    const [profile, publications, projects, interviews] = await Promise.all([
-      loadJSON("data/profile.json"),
-      loadJSON("data/publications.json"),
-      loadJSON("data/projects.json"),
-      loadJSON("data/interviews.json")
-    ]);
 
-    renderProfile(profile);
-    renderReelStrip(profile.heroReel);
-    renderProjects(projects);
-    renderInterviews(interviews);
+  // The header photo reel doesn't depend on any JSON file — it scans
+  // assets/img/hero/ directly, so it starts right away.
+  discoverReelImages().then(renderReelStrip);
 
-    ALL_PUBS = publications;
+  const [profileR, pubsR, projR, intR] = await Promise.allSettled([
+    loadJSON("data/profile.json"),
+    loadJSON("data/publications.json"),
+    loadJSON("data/projects.json"),
+    loadJSON("data/interviews.json")
+  ]);
+
+  if (profileR.status === "fulfilled") {
+    renderProfile(profileR.value);
+  } else {
+    console.error("profile.json:", profileR.reason);
+    showSectionError(document.getElementById("bioText"), "data/profile.json");
+  }
+
+  if (pubsR.status === "fulfilled") {
+    ALL_PUBS = pubsR.value;
     renderPublicationControls();
     renderPublicationResults();
-  } catch (err) {
-    console.error(err);
-    document.querySelector("main").insertAdjacentHTML(
-      "afterbegin",
-      `<div class="wrap"><p style="color:#8a3f3f;padding:2rem 0;">
-        Could not load site content. If you're viewing this file directly
-        (file://), run a local server instead \u2014 see README.md.
-      </p></div>`
-    );
+  } else {
+    console.error("publications.json:", pubsR.reason);
+    showSectionError(document.getElementById("pubResults"), "data/publications.json");
+  }
+
+  if (projR.status === "fulfilled") {
+    renderProjects(projR.value);
+  } else {
+    console.error("projects.json:", projR.reason);
+    showSectionError(document.getElementById("projectList"), "data/projects.json");
+  }
+
+  if (intR.status === "fulfilled") {
+    renderInterviews(intR.value);
+  } else {
+    console.error("interviews.json:", intR.reason);
+    showSectionError(document.getElementById("interviewGrid"), "data/interviews.json");
   }
 }
 
